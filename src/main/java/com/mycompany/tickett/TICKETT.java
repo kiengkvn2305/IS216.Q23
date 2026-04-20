@@ -1,8 +1,8 @@
 package com.mycompany.tickett;
+import com.mycompany.tickett.ui.MainForm;
 
 public class TICKETT {
-
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        new MainForm().setVisible(true);
     }
 }

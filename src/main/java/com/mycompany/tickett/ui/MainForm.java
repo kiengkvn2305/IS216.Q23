@@ -1,18 +1,44 @@
 package com.mycompany.tickett.ui;
 import com.mycompany.tickett.service.LoginService;
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.*;
 /**
  *
  * @author LENOVO
  */
-public class MainForm extends javax.swing.JFrame {
+class BackgroundPanel extends JPanel {
+    private Image bg;
 
-    /**
-     * Creates new form MainForm
-     */
+    public BackgroundPanel() {
+        java.net.URL url = getClass().getResource("/img/background1.jpg");
+
+        if (url != null) {
+            bg = new ImageIcon(url).getImage();
+        } else {
+            System.out.println("Không tìm thấy ảnh!");
+        }
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (bg != null) {
+            g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
+        }
+    }
+}
+public class MainForm extends JFrame {
+
     public MainForm() {
         initComponents();
+
+        //jPanel1.setBackground(new Color(255, 255, 255, 180));
+        //jPanel1.setOpaque(true);
+        BackgroundPanel bg = new BackgroundPanel(); 
+        bg.setLayout(new java.awt.GridBagLayout()); 
+        bg.add(jPanel1); 
+        setContentPane(bg);
+
     }
 
     /**
@@ -91,36 +117,34 @@ public class MainForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(Title)
-                                .addGap(93, 93, 93))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(UsernameTitle)
-                                        .addComponent(PasswordTitle))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(PasswordField)
-                                        .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(57, 57, 57)
-                                    .addComponent(Unhide))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(Login)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Clear)
-                                    .addGap(66, 66, 66))))
-                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addComponent(Title)
+                            .addGap(93, 93, 93))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(UsernameTitle)
+                                    .addComponent(PasswordTitle))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(PasswordField)
+                                    .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(57, 57, 57)
+                                .addComponent(Unhide))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Login)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Clear)
+                                .addGap(66, 66, 66))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(SignUp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ForgotPassword)
-                        .addGap(50, 50, 50))))
+                        .addGap(123, 123, 123)
+                        .addComponent(ForgotPassword)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +168,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SignUp)
                     .addComponent(ForgotPassword))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,16 +176,16 @@ public class MainForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addGap(160, 160, 160)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(228, 228, 228))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(52, 52, 52))
         );
 
         pack();
@@ -176,15 +200,28 @@ public class MainForm extends javax.swing.JFrame {
         String pass = new String(PasswordField.getPassword());
 
         LoginService service = new LoginService();
-
-        if(service.checkLogin(user, pass)){
-            JOptionPane.showMessageDialog(this, "Login thành công!");
-            this.setVisible(false);
-            new HomeForm().setVisible(true);
-        } 
-        else{
+        if(user.isEmpty() || pass.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không được để trống!");
+            return;
+        }
+        
+        String role = service.checkLogin(user, pass);
+        if (role.equals("FAIL")){
             JOptionPane.showMessageDialog(this, "Sai tài khoản!");
             Login.setBackground(Color.RED);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Login thành công!");
+            this.setVisible(false);
+            if (role.equals("ADMIN")){
+                new HomeAdminForm().setVisible(true);
+            }
+            if (role.equals("CUSTOMER")){
+                new HomeCustomerForm().setVisible(true);
+            }
+            if (role.equals("CREATOR")){
+                new HomeCreatorForm().setVisible(true);
+            }
         }
     }//GEN-LAST:event_LoginActionPerformed
 
