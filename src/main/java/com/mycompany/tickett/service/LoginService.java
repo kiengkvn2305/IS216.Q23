@@ -1,16 +1,11 @@
 package com.mycompany.tickett.service;
+import com.mycompany.tickett.dao.TaiKhoanDAO;
+import com.mycompany.tickett.dao.TaiKhoanImple;
 
 public class LoginService {
-    public String checkLogin(String user, String pass) {
-        if (user.equals("admin") && pass.equals("123")){
-            return "ADMIN";
-        }
-        else if (user.equals("customer") && pass.equals("123")){
-            return "CUSTOMER";
-        }
-        else if (user.equals("creator") && pass.equals("123")){
-            return "CREATOR";
-        }
-        return "FAIL";
+    private TaiKhoanDAO user = new TaiKhoanImple();
+    
+    public String checkLogin(String username, String password) {
+        return user.checkLogin(username, password);
     }
 }

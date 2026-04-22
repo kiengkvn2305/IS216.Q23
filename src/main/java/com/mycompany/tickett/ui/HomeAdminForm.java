@@ -1,19 +1,29 @@
 package com.mycompany.tickett.ui;
 import com.mycompany.tickett.ui.MainForm;
+import javax.swing.*;
+import java.awt.*;
 /**
  *
  * @author LENOVO
  */
+
+
 public class HomeAdminForm extends javax.swing.JFrame {
 
     public HomeAdminForm() {
         initComponents();
         BackgroundPanel bg = new BackgroundPanel(); 
-        bg.setLayout(new java.awt.GridBagLayout()); 
-        bg.add(jPanel1); 
+        bg.setLayout(new BorderLayout()); 
+        bg.add(jPanel1, BorderLayout.CENTER);
         setContentPane(bg);
+        
+        account.addActionListener(e -> {
+            menu.show(account, 0, account.getHeight());
+        });
+        
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -23,25 +33,48 @@ public class HomeAdminForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menu = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
-        ManageUser = new javax.swing.JButton();
-        ManageEvent = new javax.swing.JButton();
+        manageUser = new javax.swing.JButton();
+        manageEvent = new javax.swing.JButton();
+        account = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        JMenuItem profile = new JMenuItem("Xem trang cá nhân");
+        JMenuItem setting = new JMenuItem("Cài đặt và quyền riêng tư");
+        JMenuItem help = new JMenuItem("Trợ giúp");
+        JMenuItem logout = new JMenuItem("Đăng xuất");
+
+        menu.add(profile);
+        menu.add(setting);
+        menu.add(help);
+        //menu.addSeparator();
+        menu.add(logout);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ManageUser.setText("Quản lý người dùng");
-        ManageUser.addActionListener(new java.awt.event.ActionListener() {
+        manageUser.setText("Quản lý người dùng");
+        manageUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManageUserActionPerformed(evt);
+                manageUserActionPerformed(evt);
             }
         });
 
-        ManageEvent.setText("Quản lý sự kiện hệ thống");
-        ManageEvent.addActionListener(new java.awt.event.ActionListener() {
+        manageEvent.setText("Quản lý sự kiện hệ thống");
+        manageEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManageEventActionPerformed(evt);
+                manageEventActionPerformed(evt);
             }
         });
+
+        account.setText("Tài khoản");
+        account.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accountActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Vai trò: Admin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -49,19 +82,25 @@ public class HomeAdminForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(ManageUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 327, Short.MAX_VALUE)
-                .addComponent(ManageEvent)
-                .addGap(43, 43, 43))
+                .addComponent(manageUser)
+                .addGap(102, 102, 102)
+                .addComponent(manageEvent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(account)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel1)
+                .addGap(11, 11, 11))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ManageUser)
-                    .addComponent(ManageEvent))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(manageUser)
+                    .addComponent(manageEvent)
+                    .addComponent(account)
+                    .addComponent(jLabel1))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -71,26 +110,30 @@ public class HomeAdminForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ManageEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageEventActionPerformed
+    private void manageEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ManageEventActionPerformed
+    }//GEN-LAST:event_manageEventActionPerformed
 
-    private void ManageUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageUserActionPerformed
+    private void manageUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ManageUserActionPerformed
+    }//GEN-LAST:event_manageUserActionPerformed
+
+    private void accountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountActionPerformed
+
+    }//GEN-LAST:event_accountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,8 +172,11 @@ public class HomeAdminForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ManageEvent;
-    private javax.swing.JButton ManageUser;
+    private javax.swing.JButton account;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton manageEvent;
+    private javax.swing.JButton manageUser;
+    private javax.swing.JPopupMenu menu;
     // End of variables declaration//GEN-END:variables
 }
